@@ -6,11 +6,13 @@ import { store } from "./store.js" //state management
 
 /* Import components */
 import AppHeader from './components/AppHeader.vue';
+import AppMovieCard from './components/AppMovieCard.vue';
 
 
 export default {
   components: {
-    AppHeader
+    AppHeader,
+    AppMovieCard
   },
 
   data() {
@@ -28,6 +30,7 @@ export default {
       axios
         .request(this.store.options)
         .then(function (response) {
+          store.catalogMovie = response.data.results;
           console.log(response.data);
         })
         .catch(function (error) {
@@ -44,7 +47,9 @@ export default {
     <AppHeader @filterMovie="queryMovies()" />
   </header>
   <main>
-
+    <div class="container d-flex justify-content-between flex-wrap">
+      <AppMovieCard v-for="movie in store.catalogMovie" :movieInfo="movie" />
+    </div>
   </main>
   <footer>
 
@@ -52,4 +57,9 @@ export default {
 </template>
 
 <!-- CSS App -->
-<style scoped></style>
+<style scoped>
+main {
+
+  background-color: #303030;
+}
+</style>
