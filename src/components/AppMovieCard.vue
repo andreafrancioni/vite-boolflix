@@ -1,7 +1,13 @@
 <script>
 export default {
     name: "AppMovieCard",
-    props: ["movieInfo"]
+    props: ["movieInfo"],
+
+    data() {
+        return {
+            flagIcon: `./${this.movieInfo.original_language}.png`,
+        }
+    },
 }
 </script>
 
@@ -10,7 +16,7 @@ export default {
         <div class="card">
             <h2>{{ movieInfo.title }}</h2>
             <p>{{ movieInfo.original_title }}</p>
-            <p>{{ movieInfo.original_language }}</p>
+            <img :src="flagIcon" alt="">
             <p>{{ movieInfo.vote_average }}</p>
         </div>
     </div>
@@ -27,5 +33,9 @@ export default {
     align-items: center;
     justify-content: center;
     height: 100%;
+}
+
+img {
+    width: 30px;
 }
 </style>
