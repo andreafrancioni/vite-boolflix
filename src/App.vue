@@ -5,11 +5,12 @@ import axios from 'axios'; //importo Axios
 import { store } from "./store.js" //state management
 
 /* Import components */
+import AppHeader from './components/AppHeader.vue';
 
 
 export default {
   components: {
-
+    AppHeader
   },
 
   data() {
@@ -40,7 +41,7 @@ export default {
 <!-- HTML App -->
 <template>
   <header>
-
+    <AppHeader @filterMovie="queryMovies()" />
   </header>
   <main>
 
