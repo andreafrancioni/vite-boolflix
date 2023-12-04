@@ -20,10 +20,19 @@ export default {
   },
   mounted() {
     /* All'avvio dell'app lancia tali funzioni */
-
+    this.queryMovies();
   },
   methods: {
-
+    queryMovies() {
+      axios
+        .request(this.store.options)
+        .then(function (response) {
+          console.log(response.data);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    },
   }
 }
 </script>
