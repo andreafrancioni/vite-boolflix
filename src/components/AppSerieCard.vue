@@ -6,6 +6,7 @@ export default {
     data() {
         return {
             flagIcon: `./${this.serieInfo.original_language}.png`,
+            seriePoster: `https://image.tmdb.org/t/p/w342/${this.serieInfo.poster_path}`
         }
     },
 }
@@ -14,9 +15,10 @@ export default {
 <template>
     <div class="cardWrapper">
         <div class="card">
+            <img class="seriePoster" :src="seriePoster" alt="">
             <h3>{{ serieInfo.name }}</h3>
             <p>{{ serieInfo.original_name }}</p>
-            <img :src="flagIcon" alt="">
+            <img class="flag" :src="flagIcon" alt="">
             <p>{{ serieInfo.vote_average }}</p>
         </div>
     </div>
@@ -37,11 +39,15 @@ export default {
     align-items: center;
     justify-content: center;
     height: 100%;
-    width: 15em;
+    width: 342px;
     margin-left: 1em;
 }
 
-img {
+.flag {
     width: 30px;
+}
+
+.moviePoster {
+    width: 100%;
 }
 </style>
