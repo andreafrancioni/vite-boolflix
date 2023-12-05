@@ -6,7 +6,8 @@ export default {
     data() {
         return {
             flagIcon: `./${this.serieInfo.original_language}.png`,
-            seriePoster: `https://image.tmdb.org/t/p/w342/${this.serieInfo.poster_path}`
+            seriePoster: `https://image.tmdb.org/t/p/w342/${this.serieInfo.poster_path}`,
+            voteInt: (Math.ceil(this.serieInfo.vote_average) / 2),
         }
     },
 }
@@ -14,17 +15,20 @@ export default {
 
 <template>
     <div class="cardWrapper">
-        <div class="card">
+        <div class="cardPoster">
             <img class="seriePoster" :src="seriePoster" alt="">
-            <h3>{{ serieInfo.name }}</h3>
+        </div>
+        <div class="cardInfo">
+            <h3 class="text-center">{{ serieInfo.name }}</h3>
             <p>{{ serieInfo.original_name }}</p>
             <img class="flag" :src="flagIcon" alt="">
-            <p>{{ serieInfo.vote_average }}</p>
+            <p>{{ voteInt }}</p>
+            <i v-for="i in 5" :class="{ 'filled': i <= voteInt }" class="fas fa-star"></i>
         </div>
     </div>
 </template>
 
-<style>
+<style scoped>
 .cardWrapper {
     height: 50vh;
     color: #fff;
@@ -32,22 +36,26 @@ export default {
     align-items: center;
     justify-content: center;
     font-size: 1em;
+    flex-wrap: wrap;
+    position: relative;
 }
 
-.card {
+.cardInfo {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    width: 342px;
     margin-left: 1em;
+    flex-wrap: wrap;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
 }
 
 .flag {
     width: 30px;
 }
 
-.moviePoster {
-    width: 100%;
+.filled {
+    color: gold;
 }
 </style>

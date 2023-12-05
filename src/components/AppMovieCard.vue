@@ -6,7 +6,8 @@ export default {
     data() {
         return {
             flagIcon: `./${this.movieInfo.original_language}.png`,
-            moviePoster: `https://image.tmdb.org/t/p/w342/${this.movieInfo.poster_path}`
+            moviePoster: `https://image.tmdb.org/t/p/w342/${this.movieInfo.poster_path}`,
+            voteInt: (Math.ceil(this.movieInfo.vote_average) / 2),
         }
     },
 }
@@ -14,17 +15,20 @@ export default {
 
 <template>
     <div class="cardWrapper">
-        <div class="card">
+        <div class="cardPoster">
             <img class="moviePoster" :src="moviePoster" alt="">
-            <h3>{{ movieInfo.title }}</h3>
+        </div>
+        <div class="cardInfo">
+            <h3 class="text-center">{{ movieInfo.title }}</h3>
             <p>{{ movieInfo.original_title }}</p>
             <img class="flag" :src="flagIcon" alt="">
-            <p>{{ movieInfo.vote_average }}</p>
+            <p>{{ voteInt }}</p>
+            <i v-for="i in 5" :class="{ 'filled': i <= voteInt }" class="fas fa-star"></i>
         </div>
     </div>
 </template>
 
-<style>
+<style scoped>
 .cardWrapper {
     height: 50vh;
     color: #fff;
@@ -32,22 +36,26 @@ export default {
     align-items: center;
     justify-content: center;
     font-size: 1em;
+    flex-wrap: wrap;
+    position: relative;
 }
 
-.card {
+.cardInfo {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    width: 342px;
     margin-left: 1em;
+    flex-wrap: wrap;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
 }
 
 .flag {
     width: 30px;
 }
 
-.moviePoster {
-    width: 100%;
+.filled {
+    color: gold;
 }
 </style>

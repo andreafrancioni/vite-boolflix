@@ -49,6 +49,7 @@ export default {
       this.movieSearch.url = this.store.movieUrl
       console.log(this.movieSearch),
         axios.request(this.movieSearch).then(function (response) {
+          store.catalogMovie = [];
           store.catalogMovie = response.data.results;
           console.log(response.data);
         })
@@ -61,6 +62,7 @@ export default {
       this.movieSearch.url = this.store.seriesUrl
       console.log(this.movieSearch),
         axios.request(this.movieSearch).then(function (response) {
+          store.catalogSeries = [];
           store.catalogSeries = response.data.results;
           console.log(response.data);
         })
@@ -105,5 +107,6 @@ main {
   width: 80%;
   display: flex;
   overflow-x: scroll;
+  height: 100%;
 }
 </style>
