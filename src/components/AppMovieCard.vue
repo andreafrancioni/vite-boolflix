@@ -33,7 +33,6 @@ export default {
 .cardWrapper {
     color: #fff;
     display: flex;
-    align-items: center;
     justify-content: center;
     font-size: 1em;
     flex-wrap: wrap;

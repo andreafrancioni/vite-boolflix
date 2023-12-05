@@ -96,6 +96,10 @@ export default {
 
 <!-- CSS App -->
 <style scoped>
+header {
+  background-color: black;
+}
+
 main {
   background-color: #303030;
   overflow-y: auto;
@@ -104,9 +108,7 @@ main {
 
 .cardContainer {
   margin: 0 auto;
-  width: 80%;
   display: flex;
   overflow-x: scroll;
-  height: 100%;
 }
 </style>

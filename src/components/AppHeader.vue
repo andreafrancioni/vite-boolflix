@@ -25,7 +25,7 @@ export default {
     <div class="container">
         <div class="row">
             <div class="col-4">
-                <h1>BoolFlix</h1>
+                <img src="../assets/boolflix.gif" alt="">
             </div>
             <div class="col-8 d-flex align-items-center justify-content-end">
                 <input type="text" v-model="store.query">
@@ -35,4 +35,8 @@ export default {
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+img {
+    width: 10rem;
+}
+</style>
