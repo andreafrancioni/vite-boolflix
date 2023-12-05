@@ -10,6 +10,8 @@ export default {
             voteInt: (Math.ceil(this.serieInfo.vote_average) / 2),
         }
     },
+    methods: {
+    },
 }
 </script>
 
@@ -22,15 +24,15 @@ export default {
             <h3 class="text-center">{{ serieInfo.name }}</h3>
             <p>{{ serieInfo.original_name }}</p>
             <img class="flag" :src="flagIcon" alt="">
-            <p>{{ voteInt }}</p>
-            <i v-for="i in 5" :class="{ 'filled': i <= voteInt }" class="fas fa-star"></i>
+            <div class="card-stars">
+                <i v-for="i in 5" :class="{ 'filled': i <= voteInt }" class="fas fa-star"></i>
+            </div>
         </div>
     </div>
 </template>
 
 <style scoped>
 .cardWrapper {
-    height: 50vh;
     color: #fff;
     display: flex;
     align-items: center;
@@ -41,6 +43,10 @@ export default {
 }
 
 .cardInfo {
+    display: none;
+}
+
+.cardWrapper:hover .cardInfo {
     display: flex;
     align-items: center;
     justify-content: center;

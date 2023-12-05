@@ -22,15 +22,15 @@ export default {
             <h3 class="text-center">{{ movieInfo.title }}</h3>
             <p>{{ movieInfo.original_title }}</p>
             <img class="flag" :src="flagIcon" alt="">
-            <p>{{ voteInt }}</p>
-            <i v-for="i in 5" :class="{ 'filled': i <= voteInt }" class="fas fa-star"></i>
+            <div class="card-stars">
+                <i v-for="i in 5" :class="{ 'filled': i <= voteInt }" class="fas fa-star"></i>
+            </div>
         </div>
     </div>
 </template>
 
 <style scoped>
 .cardWrapper {
-    height: 50vh;
     color: #fff;
     display: flex;
     align-items: center;
@@ -41,6 +41,10 @@ export default {
 }
 
 .cardInfo {
+    display: none;
+}
+
+.cardWrapper:hover .cardInfo {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,6 +53,10 @@ export default {
     flex-direction: column;
     position: absolute;
     top: 50%;
+}
+
+.cardWrapper:hover .cardPoster img {
+    filter: blur(5px);
 }
 
 .flag {
