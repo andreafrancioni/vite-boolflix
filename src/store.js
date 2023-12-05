@@ -3,7 +3,7 @@ import { reactive } from 'vue'
 export const store = reactive({
     catalogMovie: [],
 
-    options: {
+    movieSearch: {
         method: 'GET',
         url: 'https://api.themoviedb.org/3/search/movie',
         params: { query: '', include_adult: 'false', language: 'en-US', page: '1' },

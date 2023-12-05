@@ -27,8 +27,8 @@ export default {
             <div class="col-4">
                 <h1>BoolFlix</h1>
             </div>
-            <div class="col-8">
-                <input type="text" v-model="this.store.options.params.query">
+            <div class="col-8 d-flex align-items-center justify-content-end">
+                <input type="text" v-model="store.movieSearch.params.query">
                 <button @click="filterMovie()">Cerca</button>
             </div>
         </div>

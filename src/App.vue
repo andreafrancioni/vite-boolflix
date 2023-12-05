@@ -28,7 +28,7 @@ export default {
   methods: {
     queryMovies() {
       axios
-        .request(this.store.options)
+        .request(store.movieSearch)
         .then(function (response) {
           store.catalogMovie = response.data.results;
           console.log(response.data);
@@ -47,7 +47,8 @@ export default {
     <AppHeader @filterMovie="queryMovies()" />
   </header>
   <main>
-    <div class="container d-flex justify-content-between flex-wrap">
+    <h1 class="text-center text-white">Movies</h1>
+    <div class="cardContainer">
       <AppMovieCard v-for="movie in store.catalogMovie" :movieInfo="movie" />
     </div>
   </main>
@@ -61,5 +62,12 @@ export default {
 main {
 
   background-color: #303030;
+}
+
+.cardContainer {
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  overflow-x: scroll;
 }
 </style>

@@ -14,7 +14,7 @@ export default {
 <template>
     <div class="cardWrapper">
         <div class="card">
-            <h2>{{ movieInfo.title }}</h2>
+            <h3>{{ movieInfo.title }}</h3>
             <p>{{ movieInfo.original_title }}</p>
             <img :src="flagIcon" alt="">
             <p>{{ movieInfo.vote_average }}</p>
@@ -24,8 +24,12 @@ export default {
 
 <style>
 .cardWrapper {
-    width: 200px;
-    height: 300px;
+    height: 50vh;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
 }
 
 .card {
@@ -33,6 +37,8 @@ export default {
     align-items: center;
     justify-content: center;
     height: 100%;
+    width: 15em;
+    margin-left: 1em;
 }
 
 img {
