@@ -57,6 +57,10 @@ export default {
     top: 50%;
 }
 
+.cardWrapper:hover .cardPoster img {
+    filter: blur(5px);
+}
+
 .flag {
     width: 30px;
 }
