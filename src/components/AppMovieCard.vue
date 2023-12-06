@@ -8,6 +8,9 @@ export default {
             voteInt: (Math.ceil(this.movieInfo.vote_average) / 2),
         }
     },
+    methods: {
+
+    },
 }
 </script>
 
