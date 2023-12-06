@@ -23,6 +23,7 @@ export default {
         <div class="cardInfo">
             <h3 class="text-center">{{ serieInfo.name }}</h3>
             <p>{{ serieInfo.original_name }}</p>
+            <p>{{ serieInfo.overview }}</p>
             <img class="flag" :src="flagIcon" alt="">
             <div class="card-stars">
                 <i v-for="i in 5" :class="{ 'filled': i <= voteInt }" class="fas fa-star"></i>
@@ -53,11 +54,11 @@ export default {
     flex-wrap: wrap;
     flex-direction: column;
     position: absolute;
-    top: 50%;
+    top: 3rem;
 }
 
 .cardWrapper:hover .cardPoster img {
-    filter: blur(5px);
+    filter: blur(5px) grayscale(80%);
 }
 
 .flag {
