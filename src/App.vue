@@ -107,7 +107,7 @@ main {
 }
 
 .cardContainer {
-  margin: 0 auto;
+  margin-left: 2rem;
   display: flex;
   overflow-x: scroll;
 }

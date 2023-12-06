@@ -5,8 +5,6 @@ export default {
 
     data() {
         return {
-            flagIcon: `./${this.movieInfo.original_language}.png`,
-            moviePoster: `https://image.tmdb.org/t/p/w342/${this.movieInfo.poster_path}`,
             voteInt: (Math.ceil(this.movieInfo.vote_average) / 2),
         }
     },
@@ -16,13 +14,13 @@ export default {
 <template>
     <div class="cardWrapper">
         <div class="cardPoster">
-            <img class="moviePoster" :src="moviePoster" alt="">
+            <img class="moviePoster" :src="`https://image.tmdb.org/t/p/w342/${this.movieInfo.poster_path}`" alt="">
         </div>
         <div class="cardInfo">
             <h3 class="text-center">{{ movieInfo.title }}</h3>
             <p>{{ movieInfo.original_title }}</p>
             <p>{{ movieInfo.overview }}</p>
-            <img class="flag" :src="flagIcon" alt="">
+            <img class="flag" :src="`./${this.movieInfo.original_language}.png`" alt="">
             <div class="card-stars">
                 <i v-for="i in 5" :class="{ 'filled': i <= voteInt }" class="fas fa-star"></i>
             </div>

@@ -25,7 +25,7 @@ export default {
     <div class="container">
         <div class="row">
             <div class="col-4">
-                <img src="../assets/boolflix.gif" alt="">
+                <img src="../assets/boolflix-logo.png" alt="">
             </div>
             <div class="col-8 d-flex align-items-center justify-content-end">
                 <input type="text" v-model="store.query">
