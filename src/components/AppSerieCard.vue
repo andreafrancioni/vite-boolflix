@@ -20,7 +20,7 @@ export default {
             <div class="cardPoster">
                 <img class="seriePoster" :src="`https://image.tmdb.org/t/p/w342/${this.serieInfo.poster_path}`" alt="">
             </div>
-            <div class="cardInfo">
+            <div class="cardInfo pt-3">
                 <h3 class="text-center">{{ serieInfo.name }}</h3>
                 <p>{{ serieInfo.original_name }}</p>
                 <p>{{ serieInfo.overview }}</p>
@@ -62,9 +62,11 @@ export default {
 
 .cardInfo {
     position: absolute;
-    top: 3rem;
+    top: 0;
     backface-visibility: hidden;
     transform: rotateY(180deg);
+    background-color: rgba(0, 0, 0, 0.665);
+    height: 100%;
 }
 
 .cardWrapper:hover .cardPoster img {
