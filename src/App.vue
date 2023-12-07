@@ -44,6 +44,7 @@ export default {
 
   },
   methods: {
+    /* Interroga l'api richiedendo la lista dei film con i parametri descritti nell'oggetto e li scrive nella variabile all'interno dello store */
     queryMovies() {
       this.movieSearch.params.query = this.store.query;
       this.movieSearch.url = this.store.movieUrl
@@ -57,6 +58,8 @@ export default {
             console.error(error);
           });
     },
+
+    /* Interroga l'api richiedendo la lista delle serie con i parametri descritti nell'oggetto e li scrive nella variabile all'interno dello store */
     querySeries() {
       this.movieSearch.params.query = this.store.query;
       this.movieSearch.url = this.store.seriesUrl
@@ -77,15 +80,18 @@ export default {
 <!-- HTML App -->
 <template>
   <header>
+    <!-- Richiama il componente header, e all'evento emit richiama le due funzioni. -->
     <AppHeader @filterMovie="queryMovies(), querySeries()" />
   </header>
   <main>
     <h1 class="text-center text-white">Movies</h1>
     <div class="cardContainer">
+      <!-- Per ogni film nell'array genera una card -->
       <AppMovieCard v-for="movie in store.catalogMovie" :movieInfo="movie" />
     </div>
     <h1 class="text-center text-white">Series</h1>
     <div class="cardContainer">
+      <!-- Per ogni serie nell'array genera una card -->
       <AppSerieCard v-for="serie in store.catalogSeries" :serieInfo="serie" />
     </div>
   </main>
