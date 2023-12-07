@@ -16,16 +16,19 @@ export default {
 
 <template>
     <div class="cardWrapper">
-        <div class="cardPoster">
-            <img class="moviePoster" :src="`https://image.tmdb.org/t/p/w342/${this.movieInfo.poster_path}`" alt="">
-        </div>
-        <div class="cardInfo">
-            <h3 class="text-center">{{ movieInfo.title }}</h3>
-            <p>{{ movieInfo.original_title }}</p>
-            <p>{{ movieInfo.overview }}</p>
-            <img class="flag" :src="`./${this.movieInfo.original_language}.png`" alt="">
-            <div class="card-stars">
-                <i v-for="i in 5" :class="{ 'filled': i <= voteInt }" class="fas fa-star"></i>
+        <div class="cardContent">
+
+            <div class="cardPoster">
+                <img class="moviePoster" :src="`https://image.tmdb.org/t/p/w342/${this.movieInfo.poster_path}`" alt="">
+            </div>
+            <div class="cardInfo">
+                <h3 class="text-center">{{ movieInfo.title }}</h3>
+                <p>{{ movieInfo.original_title }}</p>
+                <p>{{ movieInfo.overview }}</p>
+                <img class="flag" :src="`./${this.movieInfo.original_language}.png`" alt="">
+                <div class="card-stars">
+                    <i v-for="i in 5" :class="{ 'filled': i <= voteInt }" class="fas fa-star"></i>
+                </div>
             </div>
         </div>
     </div>
@@ -38,26 +41,35 @@ export default {
     justify-content: center;
     font-size: 1em;
     flex-wrap: wrap;
-    position: relative;
+    background-color: transparent;
+    perspective: 1000px;
+    /* Remove this if you don't want the 3D effect */
 }
+
+.cardContent {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.cardWrapper:hover .cardContent {
+    transform: rotateY(180deg);
+}
+
 
 .cardInfo {
-    display: none;
-}
-
-.cardWrapper:hover .cardInfo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 1em;
-    flex-wrap: wrap;
-    flex-direction: column;
     position: absolute;
     top: 3rem;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
 }
 
 .cardWrapper:hover .cardPoster img {
-    filter: blur(5px) grayscale(80%);
+    filter: blur(5px);
+    height: 100%;
 
 }
 
