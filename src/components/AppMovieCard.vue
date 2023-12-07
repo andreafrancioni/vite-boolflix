@@ -17,11 +17,10 @@ export default {
 <template>
     <div class="cardWrapper">
         <div class="cardContent">
-
             <div class="cardPoster">
                 <img class="moviePoster" :src="`https://image.tmdb.org/t/p/w342/${this.movieInfo.poster_path}`" alt="">
             </div>
-            <div class="cardInfo pt-3">
+            <div class="cardInfo">
                 <h3 class="text-center">{{ movieInfo.title }}</h3>
                 <p>{{ movieInfo.original_title }}</p>
                 <p>{{ movieInfo.overview }}</p>
@@ -44,6 +43,7 @@ export default {
     background-color: transparent;
     perspective: 1000px;
     /* Remove this if you don't want the 3D effect */
+    width: 342px;
 }
 
 .cardContent {
@@ -59,6 +59,17 @@ export default {
     transform: rotateY(180deg);
 }
 
+.cardPoster {
+    width: 342px;
+    height: 513px;
+}
+
+.cardPoster img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
 
 .cardInfo {
     position: absolute;
@@ -67,6 +78,8 @@ export default {
     transform: rotateY(180deg);
     background-color: rgba(0, 0, 0, 0.665);
     height: 100%;
+    width: 100%;
+    overflow-y: auto;
 }
 
 .cardWrapper:hover .cardPoster img {

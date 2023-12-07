@@ -20,7 +20,7 @@ export default {
             <div class="cardPoster">
                 <img class="seriePoster" :src="`https://image.tmdb.org/t/p/w342/${this.serieInfo.poster_path}`" alt="">
             </div>
-            <div class="cardInfo pt-3">
+            <div class="cardInfo">
                 <h3 class="text-center">{{ serieInfo.name }}</h3>
                 <p>{{ serieInfo.original_name }}</p>
                 <p>{{ serieInfo.overview }}</p>
@@ -37,7 +37,6 @@ export default {
 .cardWrapper {
     color: #fff;
     display: flex;
-    border: 1px solid white;
     justify-content: center;
     font-size: 1em;
     flex-wrap: wrap;
@@ -59,6 +58,15 @@ export default {
     transform: rotateY(180deg);
 }
 
+.cardPoster {
+    width: 342px;
+}
+
+.cardPoster img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
 
 .cardInfo {
     position: absolute;
@@ -67,6 +75,8 @@ export default {
     transform: rotateY(180deg);
     background-color: rgba(0, 0, 0, 0.665);
     height: 100%;
+    width: 100%;
+    overflow-y: auto;
 }
 
 .cardWrapper:hover .cardPoster img {
