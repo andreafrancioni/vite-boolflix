@@ -42,7 +42,7 @@ export default {
   },
   mounted() {
     /* All'avvio dell'app lancia tali funzioni */
-
+    this.queryGenre();
   },
   created() {
     /* Simula il caricamento dell'app */
@@ -69,11 +69,22 @@ export default {
     /* Interroga l'api richiedendo la lista delle serie con i parametri descritti nell'oggetto e li scrive nella variabile all'interno dello store */
     querySeries() {
       this.movieSearch.params.query = this.store.query;
-      this.movieSearch.url = this.store.seriesUrl
+      this.movieSearch.url = this.store.seriesUrl;
       console.log(this.movieSearch),
         axios.request(this.movieSearch).then(function (response) {
           store.catalogSeries = [];
           store.catalogSeries = response.data.results;
+          console.log(response.data);
+        })
+          .catch(function (error) {
+            console.error(error);
+          });
+    },
+    queryGenre() {
+      this.movieSearch.url = this.store.genreUrl;
+      console.log(this.movieSearch),
+        axios.request(this.movieSearch).then(function (response) {
+          store.genreIDs = response.data.results;
           console.log(response.data);
         })
           .catch(function (error) {
