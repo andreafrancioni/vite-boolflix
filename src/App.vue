@@ -7,18 +7,21 @@ import { store } from "./store.js" //state management
 /* Import components */
 import AppHeader from './components/AppHeader.vue';
 import AppCard from './components/AppCard.vue';
+import LoadingPage from './components/LoadingPage.vue';
 
 
 export default {
   components: {
     AppHeader,
     AppCard,
+    LoadingPage,
   },
 
   data() {
     return {
       /* Richiama store per utilizzare il file store.js come state management */
       store,
+      loading: true,
       movieSearch: {
         method: 'GET',
         url: null,
@@ -40,6 +43,12 @@ export default {
   mounted() {
     /* All'avvio dell'app lancia tali funzioni */
 
+  },
+  created() {
+    /* Simula il caricamento dell'app */
+    setTimeout(() => {
+      this.loading = false; // Nasconde la loading screen dopo 3 secondi
+    }, 3000);
   },
   methods: {
     /* Interroga l'api richiedendo la lista dei film con i parametri descritti nell'oggetto e li scrive nella variabile all'interno dello store */
@@ -82,6 +91,7 @@ export default {
     <AppHeader @filterMovie="queryMovies(), querySeries()" />
   </header>
   <main>
+    <LoadingPage :loading="loading" />
     <h1 class="text-center text-white">Movies</h1>
     <div class="cardContainer">
       <!-- Per ogni film nell'array genera una card -->
