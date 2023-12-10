@@ -1,14 +1,15 @@
 <script>
 export default {
-    name: "AppSerieCard",
-    props: ["serieInfo"],
+    name: "AppCard",
+    props: ["cardInfo"],
 
     data() {
         return {
-            voteInt: (Math.ceil(this.serieInfo.vote_average) / 2),
+            voteInt: (Math.ceil(this.cardInfo.vote_average) / 2),
         }
     },
     methods: {
+
     },
 }
 </script>
@@ -16,15 +17,15 @@ export default {
 <template>
     <div class="cardWrapper">
         <div class="cardContent">
-
             <div class="cardPoster">
-                <img class="seriePoster" :src="`https://image.tmdb.org/t/p/w342/${this.serieInfo.poster_path}`" alt="">
+                <img class="moviePoster" :src="`https://image.tmdb.org/t/p/w342/${this.cardInfo.poster_path}`" alt="">
             </div>
             <div class="cardInfo">
-                <h3 class="text-center">{{ serieInfo.name }}</h3>
-                <p>{{ serieInfo.original_name }}</p>
-                <p>{{ serieInfo.overview }}</p>
-                <img class="flag" :src="`./${this.serieInfo.original_language}.png`" alt="">
+                <h3 v-if="cardInfo.title" class="text-center">{{ cardInfo.title }}</h3>
+                <h3 v-else class="text-center">{{ cardInfo.name }}</h3>
+                <p>{{ cardInfo.original_title }}</p>
+                <p>{{ cardInfo.overview }}</p>
+                <img class="flag" :src="`./${this.cardInfo.original_language}.png`" alt="">
                 <div class="card-stars">
                     <i v-for="i in 5" :class="{ 'filled': i <= voteInt }" class="fas fa-star"></i>
                 </div>
@@ -43,6 +44,7 @@ export default {
     background-color: transparent;
     perspective: 1000px;
     /* Remove this if you don't want the 3D effect */
+    width: 342px;
 }
 
 .cardContent {
@@ -60,6 +62,7 @@ export default {
 
 .cardPoster {
     width: 342px;
+    height: 513px;
 }
 
 .cardPoster img {
@@ -67,6 +70,7 @@ export default {
     width: 100%;
     object-fit: cover;
 }
+
 
 .cardInfo {
     position: absolute;

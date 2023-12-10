@@ -6,15 +6,13 @@ import { store } from "./store.js" //state management
 
 /* Import components */
 import AppHeader from './components/AppHeader.vue';
-import AppMovieCard from './components/AppMovieCard.vue';
-import AppSerieCard from './components/AppSerieCard.vue';
+import AppCard from './components/AppCard.vue';
 
 
 export default {
   components: {
     AppHeader,
-    AppMovieCard,
-    AppSerieCard
+    AppCard,
   },
 
   data() {
@@ -87,12 +85,12 @@ export default {
     <h1 class="text-center text-white">Movies</h1>
     <div class="cardContainer">
       <!-- Per ogni film nell'array genera una card -->
-      <AppMovieCard v-for="movie in store.catalogMovie" :movieInfo="movie" />
+      <AppCard v-for="movie in store.catalogMovie" :cardInfo="movie" />
     </div>
     <h1 class="text-center text-white">Series</h1>
     <div class="cardContainer">
       <!-- Per ogni serie nell'array genera una card -->
-      <AppSerieCard v-for="serie in store.catalogSeries" :serieInfo="serie" />
+      <AppCard v-for="serie in store.catalogSeries" :cardInfo="serie" />
     </div>
   </main>
   <footer>
