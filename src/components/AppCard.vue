@@ -18,7 +18,10 @@ export default {
     <div class="cardWrapper">
         <div class="cardContent">
             <div class="cardPoster">
-                <img class="moviePoster" :src="`https://image.tmdb.org/t/p/w342/${this.cardInfo.poster_path}`" alt="">
+                <img v-if="cardInfo.poster_path" class="moviePoster"
+                    :src="`https://image.tmdb.org/t/p/w342/${this.cardInfo.poster_path}`" alt="">
+                <img v-else class="moviePoster" src="../assets/No-Image-Placeholder.svg" alt="">
+
             </div>
             <div class="cardInfo">
                 <h3 v-if="cardInfo.title" class="text-center">{{ cardInfo.title }}</h3>
