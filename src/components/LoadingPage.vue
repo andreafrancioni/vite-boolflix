@@ -36,11 +36,15 @@ export default {
 
 @keyframes scaleUp {
     0% {
-        transform: scale(0);
+        transform: scale(5);
+    }
+
+    50% {
+        transform: scale(6);
     }
 
     100% {
-        transform: scale(5);
+        transform: scale(0);
     }
 }
 
@@ -48,6 +52,7 @@ export default {
     0% {
         opacity: 1;
     }
+
 
     100% {
         opacity: 0;
